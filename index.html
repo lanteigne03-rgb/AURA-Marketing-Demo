@@ -205,9 +205,17 @@
     padding: 160px 24px 100px 60px;
     position: relative;
     z-index: 2;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image: url('/images/coverpage-bg.png');
     background-size: cover;
     background-position: center;
+    opacity: 0.8;
+    z-index: -1;
   }
 
   .hero-eyebrow {
