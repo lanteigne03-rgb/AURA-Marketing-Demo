@@ -2337,6 +2337,36 @@
       video.addEventListener('click', function() {
         if (video.paused) { video.play(); } else { video.pause(); }
       });
+
+      // Fullscreen button
+      var fsBtn = document.createElement('button');
+      fsBtn.setAttribute('aria-label', 'Toggle fullscreen');
+      fsBtn.style.cssText = 'position:absolute;bottom:10px;right:10px;z-index:3;background:rgba(0,0,0,0.55);border:1px solid rgba(235,187,102,0.5);border-radius:4px;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;';
+
+      var expandIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ebbb66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+      var collapseIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ebbb66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="10" y1="14" x2="3" y2="21"/><line x1="21" y1="3" x2="14" y2="10"/></svg>';
+      fsBtn.innerHTML = expandIcon;
+
+      fsBtn.addEventListener('mouseenter', function() { fsBtn.style.background = 'rgba(0,0,0,0.8)'; });
+      fsBtn.addEventListener('mouseleave', function() { fsBtn.style.background = 'rgba(0,0,0,0.55)'; });
+
+      fsBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          (video.requestFullscreen || video.webkitRequestFullscreen).call(video);
+        } else {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        }
+      });
+
+      document.addEventListener('fullscreenchange', function() {
+        fsBtn.innerHTML = document.fullscreenElement === video ? collapseIcon : expandIcon;
+      });
+      document.addEventListener('webkitfullscreenchange', function() {
+        fsBtn.innerHTML = document.webkitFullscreenElement === video ? collapseIcon : expandIcon;
+      });
+
+      wrap.appendChild(fsBtn);
     });
   });
 </script>
