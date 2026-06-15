@@ -760,6 +760,16 @@
     letter-spacing: 0.06em;
     color: var(--gold);
     margin: 56px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .roster-subheading::before,
+  .roster-subheading::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
   }
 
   .roster-grid {
