@@ -89,6 +89,41 @@
   }
 
 
+  /* ── Montserrat TTF variants (weights not already embedded above) ── */
+
+  /* Thin 100 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-ThinItalic.ttf') format('truetype'); font-weight: 100; font-style: italic; font-display: swap; }
+
+  /* ExtraLight 200 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-ExtraLight.ttf') format('truetype'); font-weight: 200; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-ExtraLightItalic.ttf') format('truetype'); font-weight: 200; font-style: italic; font-display: swap; }
+
+  /* Light 300 italic only (normal already embedded) */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+
+  /* Regular 400 italic only (normal already embedded) */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+
+  /* Medium 500 italic only (normal already embedded) */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-MediumItalic.ttf') format('truetype'); font-weight: 500; font-style: italic; font-display: swap; }
+
+  /* SemiBold 600 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-SemiBoldItalic.ttf') format('truetype'); font-weight: 600; font-style: italic; font-display: swap; }
+
+  /* Bold 700 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+
+  /* ExtraBold 800 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-ExtraBoldItalic.ttf') format('truetype'); font-weight: 800; font-style: italic; font-display: swap; }
+
+  /* Black 900 */
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montserrat'; src: url('/fonts/Montserrat-BlackItalic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
+
   /* ── Dharma Gothic E ExBold Italic (weight 800, italic) — all display/heading text
         Logo, nav logo, hero heading, section headings, stat numbers, athlete names,
         campaign titles, service names, step numbers, CTA heading, footer logo, contact h1.
@@ -738,7 +773,7 @@
     background: var(--off-black);
     background-size: cover;
     background-position: center top;
-    padding: 32px 28px;
+    padding: 32px 28px 16px;
     transition: background-color 0.2s, transform 0.2s;
     border-right: 0.5px solid var(--border);
     border-bottom: 0.5px solid var(--border);
@@ -776,7 +811,7 @@
     font-family: 'Dharma Gothic E', 'Bebas Neue', 'Arial Black', Impact, sans-serif; /* Dharma Gothic E ExBold Italic — display/heading */
     font-style: italic; /* Dharma Gothic E ExBold Italic */
     text-transform: uppercase; /* brand guideline: all caps */
-    font-size: 32px;
+    font-size: 36px;
     letter-spacing: 0.06em;
     color: var(--white);
     margin-bottom: 6px;
@@ -784,6 +819,15 @@
     flex-direction: column;
     line-height: 1;
     gap: 1px;
+  }
+
+  .athlete-name span:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 0.5em;
+    letter-spacing: 0.04em;
+    color: var(--gold);
   }
 
   .athlete-team {
@@ -1350,7 +1394,7 @@
     .roster-grid { grid-template-columns: 1fr 1fr; margin-top: 40px; }
     .athlete-card:nth-child(3n) { border-right: 0.5px solid var(--border); }
     .athlete-card:nth-child(2n) { border-right: none; }
-    .athlete-card { padding: 20px 16px; }
+    .athlete-card { padding: 20px 16px 10px; }
     .athlete-card { background-size: auto 55% !important; background-position: right top !important; }
     .athlete-name { font-size: 28px; }
     .athlete-headshot { max-height: 160px; }
