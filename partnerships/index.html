@@ -2558,6 +2558,27 @@ video:-webkit-full-screen {
         var active = document.fullscreenElement === video || document.webkitFullscreenElement === video ||
                      document.fullscreenElement === wrap  || document.webkitFullscreenElement === wrap;
         fsBtn.innerHTML = active ? collapseSVG : expandSVG;
+        if (active) {
+          // Portrait video on landscape screen — contain it, don't crop
+          video.style.objectFit     = 'contain';
+          video.style.width         = 'auto';
+          video.style.height        = '100%';
+          wrap.style.display        = 'flex';
+          wrap.style.alignItems     = 'center';
+          wrap.style.justifyContent = 'center';
+          wrap.style.background     = '#000';
+          wrap.style.overflow       = 'visible';
+        } else {
+          // Restore card layout
+          video.style.objectFit     = '';
+          video.style.width         = '';
+          video.style.height        = '';
+          wrap.style.display        = '';
+          wrap.style.alignItems     = '';
+          wrap.style.justifyContent = '';
+          wrap.style.background     = '';
+          wrap.style.overflow       = '';
+        }
       }
       document.addEventListener('fullscreenchange',       onFSChange);
       document.addEventListener('webkitfullscreenchange', onFSChange);
@@ -2569,14 +2590,6 @@ video:-webkit-full-screen {
       bar.appendChild(timeEl);
       bar.appendChild(trackWrap);
       bar.appendChild(muteBtn);
-      bar.appendChild(fsBtn);
-      wrap.appendChild(bar);
-    });
-  });
-</script>
-</body>
-</html>
-Child(muteBtn);
       bar.appendChild(fsBtn);
       wrap.appendChild(bar);
     });
