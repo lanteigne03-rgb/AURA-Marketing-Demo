@@ -1341,6 +1341,7 @@
     .athlete-card:nth-child(3n) { border-right: 0.5px solid var(--border); }
     .athlete-card:nth-child(2n) { border-right: none; }
     .athlete-card { padding: 20px 16px; }
+    .athlete-card { background-size: auto 55% !important; background-position: right top !important; }
     .athlete-name { font-size: 20px; }
 
     /* BRANDS */
@@ -1362,6 +1363,8 @@
     #contact-page h1 { font-size: 52px; }
     .contact-row { flex-direction: column; align-items: flex-start; gap: 8px; }
     .contact-email { white-space: normal; font-size: 13px; }
+    .contact-row { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .contact-info { text-align: center; }
 
     /* SECTION HEADINGS */
     .section-sub { font-size: 15px; }
@@ -1371,7 +1374,7 @@
   @media (max-width: 400px) {
     .hero-heading { font-size: 52px; }
     .roster-grid { grid-template-columns: 1fr; }
-    .athlete-card { border-right: none; }
+    .athlete-card { border-right: none; background-size: auto 60% !important; background-position: right top !important; }
     .featured-metrics { grid-template-columns: 1fr; }
     .stats-bar { grid-template-columns: 1fr; }
     .stat-item { border-right: none !important; }
@@ -2168,32 +2171,13 @@
 </footer>
 <script>
   (function() {
-    // Hamburger
     var btn = document.getElementById('btn-hamburger');
     var links = document.getElementById('nav-links');
-    if (btn) btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      links.classList.toggle('open');
-      btn.classList.toggle('open');
-    });
-
-    // Dropdown trigger
+    if (btn) btn.addEventListener('click', function(e) { e.stopPropagation(); links.classList.toggle('open'); btn.classList.toggle('open'); });
     var ddBtn = document.querySelector('.nav-dropdown-trigger');
     var ddEl  = document.getElementById('nav-dropdown');
-    if (ddBtn) ddBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var open = ddEl.classList.toggle('open');
-      ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    // Close on outside click
-    document.addEventListener('click', function(e) {
-      var nav = document.querySelector('nav');
-      if (nav && !nav.contains(e.target)) {
-        if (links) { links.classList.remove('open'); if (btn) btn.classList.remove('open'); }
-        if (ddEl)  { ddEl.classList.remove('open'); if (ddBtn) ddBtn.setAttribute('aria-expanded','false'); }
-      }
-    });
+    if (ddBtn) ddBtn.addEventListener('click', function(e) { e.stopPropagation(); var open = ddEl.classList.toggle('open'); ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    document.addEventListener('click', function(e) { var nav = document.querySelector('nav'); if (nav && !nav.contains(e.target)) { if (links) { links.classList.remove('open'); if (btn) btn.classList.remove('open'); } if (ddEl) { ddEl.classList.remove('open'); if (ddBtn) ddBtn.setAttribute('aria-expanded','false'); } } });
   })();
 </script>
 <script>
