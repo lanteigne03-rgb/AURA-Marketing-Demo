@@ -2276,5 +2276,15 @@
     });
   });
 </script>
+<script>
+  document.querySelectorAll('.athlete-ig').forEach(link => {
+    const match = link.href.match(/instagram\.com\/([^/?#]+)/);
+    if (match) {
+      const span = document.createElement('span');
+      span.textContent = '@' + match[1].replace(/\/$/, '');
+      link.appendChild(span);
+    }
+  });
+</script>
 </body>
 </html>
