@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | Aura Sports Group Marketing</title>
+<meta name="description" content="The page you're looking for doesn't exist. Return to Aura Sports Group Marketing.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://aurasportsmarketing.com/404">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="/nav.js" defer></script>
+<style>
+  :root {
+    --gold:       #ebbb66;
+    --gold-light: #f5d48a;
+    --gold-dim:   #9a7a3a;
+    --black:      #0A0A0A;
+    --panel:      #161616;
+    --border:     rgba(235,187,102,0.18);
+    --text:       #F0EDE6;
+    --muted:      #888680;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV ───────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 60px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--black) !important;
+    padding: 10px 22px;
+    font-size: 12px;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    width: 36px;
+    height: 36px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* dropdown */
+  .nav-dropdown-wrap { position: relative; }
+  .nav-dropdown-trigger {
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; gap: 5px; padding: 4px; width: 36px; height: 36px;
+  }
+  .nav-dropdown-trigger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-dropdown-trigger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-dropdown-trigger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-dropdown-trigger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(14,14,14,0.97);
+    backdrop-filter: blur(20px);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 180px;
+    z-index: 200;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  }
+  .nav-dropdown.open { display: block; }
+  .nav-dropdown li { list-style: none; }
+  .nav-page-btn {
+    display: block;
+    padding: 12px 24px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+    background: none; border: none; cursor: pointer;
+    width: 100%; text-align: left;
+    font-family: 'Montserrat', system-ui, sans-serif; font-weight: 400;
+  }
+  .nav-page-btn:hover { color: var(--gold); background: rgba(235,187,102,0.06); }
+  nav button, nav a { touch-action: manipulation; }
+
+  /* ── MAIN ──────────────────────────────────────── */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle radial glow behind the 404 */
+  main::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(235,187,102,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .error-wrap {
+    max-width: 560px;
+    position: relative;
+  }
+
+  .error-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 16px;
+  }
+
+  .error-code {
+    font-size: clamp(100px, 18vw, 168px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 32px;
+    user-select: none;
+  }
+
+  .error-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-dim);
+    opacity: 0.5;
+    margin: 0 auto 28px;
+  }
+
+  .error-heading {
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .error-body {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 44px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 32px;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    touch-action: manipulation;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+    padding: 14px 32px;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    touch-action: manipulation;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── FOOTER ─────────────────────────────────────── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .footer-nav {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .footer-nav a {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--gold); }
+
+  /* ── MOBILE ─────────────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 57px; left: 0; right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 16px 20px 24px;
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 0.5px solid var(--border); }
+    .nav-links li:last-child { border-bottom: none; margin-top: 12px; }
+    .nav-links a { display: block; padding: 14px 0; font-size: 14px; }
+    .nav-cta { display: block; width: 100%; text-align: center; padding: 14px 24px; }
+
+    .nav-dropdown-trigger { display: none; }
+    .nav-dropdown-wrap { display: contents; }
+    .nav-dropdown {
+      display: flex !important;
+      position: static;
+      transform: none;
+      background: none;
+      backdrop-filter: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      min-width: auto;
+      flex-direction: column;
+    }
+    .nav-page-btn { padding: 14px 0; border-bottom: 0.5px solid var(--border); }
+
+    main { padding: 100px 24px 60px; }
+    .error-actions { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    .footer-nav { flex-wrap: wrap; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Aura Sports Group Marketing — home">
+    <span class="nav-logo-text">Aura Sports Group Marketing</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li class="nav-dropdown-wrap">
+      <button class="nav-dropdown-trigger" id="btn-dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-dropdown" id="nav-dropdown" role="menu">
+        <li><a href="/" class="nav-page-btn">Home</a></li>
+        <li><a href="/partnerships" class="nav-page-btn">Partnerships</a></li>
+        <li><a href="/roster" class="nav-page-btn">Client Roster</a></li>
+        <li><a href="/contact" class="nav-page-btn">Contact</a></li>
+      </ul>
+    </li>
+    <li><a href="/contact" class="nav-cta" style="text-decoration:none;display:inline-block;font-family:'Montserrat',system-ui,sans-serif;">Get in Touch</a></li>
+  </ul>
+  <button class="nav-hamburger" id="btn-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <div class="error-wrap">
+    <p class="error-label">Error</p>
+    <div class="error-code" aria-hidden="true">404</div>
+    <div class="error-rule"></div>
+    <h1 class="error-heading">Page Not Found</h1>
+    <p class="error-body">The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+    <div class="error-actions">
+      <a href="/" class="btn-primary">Back to Home</a>
+      <a href="/contact" class="btn-ghost">Contact Us</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2025 Aura Sports Group Marketing. All rights reserved.</p>
+  <ul class="footer-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/partnerships">Partnerships</a></li>
+    <li><a href="/roster">Client Roster</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
