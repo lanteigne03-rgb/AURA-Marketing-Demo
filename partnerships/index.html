@@ -21,23 +21,69 @@
 <meta name="twitter:description" content="See how Aura Sports Group Marketing secures brand partnerships, sponsorships, and endorsement deals for elite NFL and college athletes.">
 
 <!-- Favicons -->
-<!-- Favicons -->
-<!-- Favicons -->
-<!-- Favicons -->
-<!-- Favicons -->
-<!-- Favicons -->
-<!-- Favicons -->
-
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-white-512.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-white-192.png" media="(prefers-color-scheme: dark)">
-
 <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aurasportsmarketing.com/#organization",
+      "name": "Aura Sports Group Marketing",
+      "url": "https://aurasportsmarketing.com"
+    },
+    {
+      "@type": "Service",
+      "name": "NFL Athlete Brand Partnerships & Endorsements",
+      "provider": {"@id": "https://aurasportsmarketing.com/#organization"},
+      "url": "https://aurasportsmarketing.com/partnerships/",
+      "description": "Aura Sports Group Marketing secures brand partnerships, endorsement deals, and sponsorships for elite NFL athletes including Super Bowl champions and Pro Bowlers. The agency connects brands with authentic athlete ambassadors across industries including consumer goods, apparel, tech, and lifestyle.",
+      "serviceType": "Athlete Marketing",
+      "areaServed": "US",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Brands and companies seeking NFL athlete endorsements and sponsorships"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Athlete Partnership Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brand Endorsement Deals",
+              "description": "Long-term brand ambassador agreements between NFL athletes and companies"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sponsorship Activation",
+              "description": "Integrated sponsorship campaigns featuring Pro Bowl and Super Bowl champion athletes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Social Media Partnerships",
+              "description": "Authentic social media content collaborations with NFL athletes and their audiences"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
 
 <style>
   /* ═══════════════════════════════════════════════════════════════════
@@ -2546,55 +2592,4 @@ video:-webkit-full-screen {
         else if (video.webkitEnterFullscreen)   video.webkitEnterFullscreen(); // iOS
       }
       function doExitFS() {
-        if      (document.exitFullscreen)       document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      }
-      function inFS() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
-
-      fsBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        inFS() ? doExitFS() : doEnterFS();
-      });
-      function onFSChange() {
-        var active = document.fullscreenElement === video || document.webkitFullscreenElement === video ||
-                     document.fullscreenElement === wrap  || document.webkitFullscreenElement === wrap;
-        fsBtn.innerHTML = active ? collapseSVG : expandSVG;
-        if (active) {
-          // Portrait video on landscape screen — contain it, don't crop
-          video.style.objectFit     = 'contain';
-          video.style.width         = 'auto';
-          video.style.height        = '100%';
-          wrap.style.display        = 'flex';
-          wrap.style.alignItems     = 'center';
-          wrap.style.justifyContent = 'center';
-          wrap.style.background     = '#000';
-          wrap.style.overflow       = 'visible';
-        } else {
-          // Restore card layout
-          video.style.objectFit     = '';
-          video.style.width         = '';
-          video.style.height        = '';
-          wrap.style.display        = '';
-          wrap.style.alignItems     = '';
-          wrap.style.justifyContent = '';
-          wrap.style.background     = '';
-          wrap.style.overflow       = '';
-        }
-      }
-      document.addEventListener('fullscreenchange',       onFSChange);
-      document.addEventListener('webkitfullscreenchange', onFSChange);
-      video.addEventListener('webkitbeginfullscreen', function() { fsBtn.innerHTML = collapseSVG; });
-      video.addEventListener('webkitendfullscreen',   function() { fsBtn.innerHTML = expandSVG;   });
-
-      /* — Assemble — */
-      bar.appendChild(ppBtn);
-      bar.appendChild(timeEl);
-      bar.appendChild(trackWrap);
-      bar.appendChild(muteBtn);
-      bar.appendChild(fsBtn);
-      wrap.appendChild(bar);
-    });
-  });
-</script>
-</body>
-</html>
+        if      (document.exitFullscreen)       document.exitF
