@@ -2423,25 +2423,30 @@ video:-webkit-full-screen {
       wrap.style.userSelect = 'none';
       wrap.style.webkitUserSelect = 'none';
 
-      /* ── Render first frame on mobile (iOS Safari ignores currentTime without play) ── */
+      /* ── Render first frame (iOS Safari needs play→pause; others just need a seek) ── */
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
       function showFirstFrame() {
-        if (video.readyState >= 2) {
-          video.currentTime = 0.001;
-          return;
+        if (video.readyState >= 2) { video.currentTime = 0.001; return; }
+        if (isIOS) {
+          /* iOS ignores currentTime without a prior play() */
+          var played = false;
+          function tryPlay() {
+            if (played) return;
+            played = true;
+            video.play().then(function() {
+              video.pause();
+              video.currentTime = 0.001;
+            }).catch(function() {
+              video.currentTime = 0.001;
+            });
+          }
+          if (video.readyState >= 1) { tryPlay(); }
+          else { video.addEventListener('loadedmetadata', tryPlay, { once: true }); }
+        } else {
+          /* Desktop & Android: a seek after metadata is enough */
+          if (video.readyState >= 1) { video.currentTime = 0.001; }
+          else { video.addEventListener('loadedmetadata', function() { video.currentTime = 0.001; }, { once: true }); }
         }
-        var played = false;
-        function tryPlay() {
-          if (played) return;
-          played = true;
-          video.play().then(function() {
-            video.pause();
-            video.currentTime = 0.001;
-          }).catch(function() {
-            video.currentTime = 0.001;
-          });
-        }
-        if (video.readyState >= 1) { tryPlay(); }
-        else { video.addEventListener('loadedmetadata', tryPlay, { once: true }); }
       }
       var frameObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
