@@ -2389,7 +2389,6 @@ video:-webkit-full-screen {
     <p class="footer-copy">© 2025 Aura Sports Group Marketing. All rights reserved.</p>
   </div>
 </footer>
-<script src="/nav.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
@@ -2591,4 +2590,55 @@ video:-webkit-full-screen {
         else if (video.webkitEnterFullscreen)   video.webkitEnterFullscreen(); // iOS
       }
       function doExitFS() {
-        if      (document.exitFullscreen)       document.exitF
+        if      (document.exitFullscreen)       document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+      function inFS() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+
+      fsBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        inFS() ? doExitFS() : doEnterFS();
+      });
+      function onFSChange() {
+        var active = document.fullscreenElement === video || document.webkitFullscreenElement === video ||
+                     document.fullscreenElement === wrap  || document.webkitFullscreenElement === wrap;
+        fsBtn.innerHTML = active ? collapseSVG : expandSVG;
+        if (active) {
+          // Portrait video on landscape screen — contain it, don't crop
+          video.style.objectFit     = 'contain';
+          video.style.width         = 'auto';
+          video.style.height        = '100%';
+          wrap.style.display        = 'flex';
+          wrap.style.alignItems     = 'center';
+          wrap.style.justifyContent = 'center';
+          wrap.style.background     = '#000';
+          wrap.style.overflow       = 'visible';
+        } else {
+          // Restore card layout
+          video.style.objectFit     = '';
+          video.style.width         = '';
+          video.style.height        = '';
+          wrap.style.display        = '';
+          wrap.style.alignItems     = '';
+          wrap.style.justifyContent = '';
+          wrap.style.background     = '';
+          wrap.style.overflow       = '';
+        }
+      }
+      document.addEventListener('fullscreenchange',       onFSChange);
+      document.addEventListener('webkitfullscreenchange', onFSChange);
+      video.addEventListener('webkitbeginfullscreen', function() { fsBtn.innerHTML = collapseSVG; });
+      video.addEventListener('webkitendfullscreen',   function() { fsBtn.innerHTML = expandSVG;   });
+
+      /* — Assemble — */
+      bar.appendChild(ppBtn);
+      bar.appendChild(timeEl);
+      bar.appendChild(trackWrap);
+      bar.appendChild(muteBtn);
+      bar.appendChild(fsBtn);
+      wrap.appendChild(bar);
+    });
+  });
+</script>
+</body>
+</html>
