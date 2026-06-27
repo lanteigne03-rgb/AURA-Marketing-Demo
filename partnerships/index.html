@@ -2395,6 +2395,7 @@ video:-webkit-full-screen {
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    var isMobile = isTouch && /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     function fmtTime(s) {
       if (!isFinite(s) || isNaN(s)) return '0:00';
@@ -2478,7 +2479,7 @@ video:-webkit-full-screen {
           video.muted = false;
           muteBtn.innerHTML = soundSVG();
           video.play();
-          if (isTouch) { doEnterFS(); }
+          if (isMobile) { doEnterFS(); }
         } else {
           video.pause();
         }
