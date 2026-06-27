@@ -2647,4 +2647,28 @@ video:-webkit-full-screen {
           // Restore card layout
           video.style.objectFit     = '';
           video.style.width         = '';
-          video.style.hei
+          video.style.height        = '';
+          wrap.style.display        = '';
+          wrap.style.alignItems     = '';
+          wrap.style.justifyContent = '';
+          wrap.style.background     = '';
+          wrap.style.overflow       = '';
+        }
+      }
+      document.addEventListener('fullscreenchange',       onFSChange);
+      document.addEventListener('webkitfullscreenchange', onFSChange);
+      video.addEventListener('webkitbeginfullscreen', function() { fsBtn.innerHTML = collapseSVG; });
+      video.addEventListener('webkitendfullscreen',   function() { fsBtn.innerHTML = expandSVG;   });
+
+      /*, Assemble, */
+      bar.appendChild(ppBtn);
+      bar.appendChild(timeEl);
+      bar.appendChild(trackWrap);
+      bar.appendChild(muteBtn);
+      bar.appendChild(fsBtn);
+      wrap.appendChild(bar);
+    });
+  });
+</script>
+</body>
+</html>
