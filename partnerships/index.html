@@ -2417,6 +2417,7 @@ video:-webkit-full-screen {
       '</svg>';
     }
 
+    var currentlyPlaying = null;
     document.querySelectorAll('.video-wrap').forEach(function(wrap) {
       var video = wrap.querySelector('video');
       if (!video) return;
@@ -2464,6 +2465,7 @@ video:-webkit-full-screen {
       wrap.appendChild(overlay);
 
       var hideOverlayTimer;
+      var hasPlayed = false;
       function showPlayOverlay()  { clearTimeout(hideOverlayTimer); overlay.style.display = 'flex'; overlay.innerHTML = svgPlay(); }
       function flashPauseOverlay() {
         clearTimeout(hideOverlayTimer);
@@ -2471,11 +2473,38 @@ video:-webkit-full-screen {
         hideOverlayTimer = setTimeout(function() { if (!video.paused) overlay.style.display = 'none'; }, 1200);
       }
 
-      function togglePlay() { video.paused ? video.play() : video.pause(); }
+      function togglePlay() {
+        if (video.paused) {
+          video.muted = false;
+          muteBtn.innerHTML = soundSVG();
+          video.play();
+          if (isTouch) { doEnterFS(); }
+        } else {
+          video.pause();
+        }
+      }
       overlay.addEventListener('click', function(e) { e.stopPropagation(); togglePlay(); });
       video.addEventListener('click',  function() { togglePlay(); });
-      video.addEventListener('play',   flashPauseOverlay);
-      video.addEventListener('pause',  showPlayOverlay);
+      video.addEventListener('play', function() {
+        if (currentlyPlaying && currentlyPlaying !== video) { currentlyPlaying.pause(); }
+        currentlyPlaying = video;
+        if (!hasPlayed) {
+          hasPlayed = true;
+          if (!isTouch) {
+            bar.style.opacity = '1';
+            wrap.addEventListener('mouseenter', function() { bar.style.opacity = '1'; });
+            wrap.addEventListener('mouseleave', function() { bar.style.opacity = '0'; });
+          } else {
+            bar.style.display = 'flex';
+            bar.style.opacity = '1';
+          }
+        }
+        flashPauseOverlay();
+      });
+      video.addEventListener('pause', function() {
+        if (currentlyPlaying === video) { currentlyPlaying = null; }
+        showPlayOverlay();
+      });
       video.addEventListener('ended',  function() { showPlayOverlay(); video.currentTime = 0.01; });
 
 
@@ -2487,12 +2516,9 @@ video:-webkit-full-screen {
         'background:linear-gradient(transparent,rgba(0,0,0,0.78))',
         'z-index:3;box-sizing:border-box'
       ].join(';');
-      if (!isTouch) {
-        bar.style.opacity = '0';
-        bar.style.transition = 'opacity 0.2s';
-        wrap.addEventListener('mouseenter', function() { bar.style.opacity = '1'; });
-        wrap.addEventListener('mouseleave', function() { bar.style.opacity = '0'; });
-      }
+      bar.style.opacity = '0';
+      bar.style.transition = 'opacity 0.2s';
+      if (isTouch) { bar.style.display = 'none'; }
 
       /* — Play/pause mini button — */
       var ppBtn = document.createElement('button');
