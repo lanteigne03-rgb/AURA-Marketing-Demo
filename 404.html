@@ -17,12 +17,13 @@
 <script src="/nav.js" defer></script>
 <style>
   :root {
-    --gold:       #ebbb66;
-    --gold-light: #f5d48a;
-    --gold-dim:   #9a7a3a;
+    --gold:       #c6a567;
+    --gold-light: #d9be85;
+    --gold-dim:   #9c7e45;
+    --metal-gold: linear-gradient(168deg, #aa812f 0%, #f7f2ec 19%, #e7c576 33%, #b2862a 47%, #e7c576 60.5%, #f0efeb 70.7%);
     --black:      #0A0A0A;
     --panel:      #161616;
-    --border:     rgba(235,187,102,0.18);
+    --border:     rgba(198,165,103,0.18);
     --text:       #F0EDE6;
     --muted:      #888680;
   }
@@ -83,14 +84,14 @@
   }
   .nav-links a:hover { color: var(--gold); }
   .nav-cta {
-    background: var(--gold) !important;
+    background: var(--metal-gold) !important;
     color: var(--black) !important;
     padding: 10px 22px;
     font-size: 12px;
     font-weight: 700 !important;
     letter-spacing: 0.1em;
   }
-  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-cta:hover { filter: brightness(1.06) !important; box-shadow: 0 0 18px rgba(198, 165, 103, 0.4) !important; }
 
   .nav-hamburger {
     display: none;
@@ -165,7 +166,7 @@
     width: 100%; text-align: left;
     font-family: 'Montserrat', system-ui, sans-serif; font-weight: 400;
   }
-  .nav-page-btn:hover { color: var(--gold); background: rgba(235,187,102,0.06); }
+  .nav-page-btn:hover { color: var(--gold); background: rgba(198,165,103,0.06); }
   nav button, nav a { touch-action: manipulation; }
 
   /* ── MAIN ──────────────────────────────────────── */
@@ -189,7 +190,7 @@
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(ellipse at center, rgba(235,187,102,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(198,165,103,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -254,7 +255,7 @@
 
   .btn-primary {
     display: inline-block;
-    background: var(--gold);
+    background: var(--metal-gold);
     color: var(--black);
     padding: 14px 32px;
     font-family: 'Montserrat', system-ui, sans-serif;
@@ -263,10 +264,10 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: filter 0.2s, box-shadow 0.2s;
     touch-action: manipulation;
   }
-  .btn-primary:hover { background: var(--gold-light); }
+  .btn-primary:hover { filter: brightness(1.06); box-shadow: 0 0 24px rgba(198, 165, 103, 0.45); }
 
   .btn-ghost {
     display: inline-block;
