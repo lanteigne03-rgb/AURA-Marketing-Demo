@@ -72,10 +72,7 @@
       "background:#0A0A0A;color:#F0EDE6;display:flex;align-items:center;justify-content:center;" +
       "font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;padding:24px;}" +
       "#asgm-lock-box{width:100%;max-width:360px;text-align:center;}" +
-      "#asgm-lock-logo{display:block;width:100%;max-width:220px;height:auto;margin:0 auto 20px;}" +
-      "#asgm-lock-box h1{font-family:'Dharma Gothic E','Bebas Neue','Arial Black',Impact,sans-serif;" +
-      "font-style:italic;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;" +
-      "color:#c6a567;margin:0 0 8px;font-weight:800;}" +
+      "#asgm-lock-logo{display:block;width:100%;max-width:220px;height:auto;margin:0 auto 24px;}" +
       "#asgm-lock-box p{font-size:14px;color:#888680;margin:0 0 24px;line-height:1.5;}" +
       "#asgm-lock-form{display:flex;flex-direction:column;gap:12px;}" +
       "#asgm-lock-input{width:100%;box-sizing:border-box;background:#161616;" +
@@ -96,7 +93,6 @@
     overlay.innerHTML =
       '<div id="asgm-lock-box">' +
       '<img id="asgm-lock-logo" src="/images/aura-lock-logo.svg" alt="Aura Sports Group Marketing" />' +
-      "<h1>Marketing</h1>" +
       "<p>This site is password protected.</p>" +
       '<form id="asgm-lock-form" autocomplete="off">' +
       '<input id="asgm-lock-input" type="password" placeholder="Enter password" autofocus />' +
