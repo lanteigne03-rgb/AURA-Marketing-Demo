@@ -18,7 +18,7 @@
   "use strict";
 
   var SALT = "asgm-lock-2026";
-  var LOCK_HASH = "f69269cf"; // hash of SALT + the site password
+  var LOCK_HASH = "28bfe105"; // hash of SALT + the site password
   var STORAGE_KEY = "asgmSiteUnlock";
   var UNLOCK_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
