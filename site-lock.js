@@ -1,10 +1,14 @@
 /*!
- * Aura Sports Group Marketing — simple site-wide password gate.
+ * Aura Sports Group Marketing — simple password gate for the client roster page.
+ *
+ * Only /roster/ loads this script. To lock another page, add
+ *   <script src="/site-lock.js"></script>
+ * to the top of its <head>.
  *
  * This is a client-side deterrent only, not real security: anyone who views
  * this file's source can find the salted hash below and brute-force or
  * dictionary-attack it, and anyone with dev tools can bypass the gate
- * entirely. It's meant to keep the site out of casual view (search
+ * entirely. It's meant to keep the roster out of casual view (search
  * crawlers, stray links, people poking around), not to protect anything
  * sensitive. For real protection, put the domain behind Cloudflare Access
  * or a host with built-in password protection (e.g. Netlify).
@@ -93,7 +97,7 @@
     overlay.innerHTML =
       '<div id="asgm-lock-box">' +
       '<img id="asgm-lock-logo" src="/images/aura-lock-logo.svg" alt="Aura Sports Group Marketing" />' +
-      "<p>This site is password protected.</p>" +
+      "<p>The client roster is password protected.</p>" +
       '<form id="asgm-lock-form" autocomplete="off">' +
       '<input id="asgm-lock-input" type="password" placeholder="Enter password" autofocus />' +
       '<button id="asgm-lock-submit" type="submit">Enter</button>' +
